@@ -40,14 +40,15 @@ testArrayBuilder = do
         (Cons.cons 1 <> Cons.cons 2 <> Cons.cons 3 <> Cons.cons 4 <> Cons.cons 5 <> Cons.cons 6 <> Cons.cons 7 <> Cons.cons 8)
     == [ 1, 2, 3, 4, 5, 6, 7, 8 ]
 
-  log "Cons.Builder performance"
-  timeit \_ -> assert $ Cons.build (foldMap Cons.cons largeArr) == largeArr
-
   -- log "Overflowing.Builder performance"
   -- timeit \_ -> assert $ Overflowing.build (foldMap Overflowing.cons largeArr) == largeArr
 
   log "Array.cons performance"
   timeit \_ -> assert $ (foldr Array.cons [] largeArr) == largeArr
 
+  log "Cons.Builder performance"
+  timeit \_ -> assert $ Cons.build (foldMap Cons.cons largeArr) == largeArr
+
   log "Array.fromFoldable performance"
   timeit \_ -> assert $ (Array.fromFoldable largeArr) == largeArr
+
