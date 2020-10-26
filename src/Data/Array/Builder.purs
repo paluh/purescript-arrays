@@ -24,3 +24,5 @@ snoc a = Builder (unsafeSnoc a)
 
 build ∷ ∀ a. Builder a → Array a
 build (Builder f) = f []
+
+
